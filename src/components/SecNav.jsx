@@ -85,7 +85,7 @@ const SecNav = () => {
           {/* Top bar container */}
           <div className="flex items-center justify-between h-11">
             {/* Logo */}
-            <Link to="/" className="w-[160px] flex-shrink-0">
+            <Link to="/homepage" className="w-[160px] flex-shrink-0">
               <img src={DCKNav} alt="Logo" />
             </Link>
 

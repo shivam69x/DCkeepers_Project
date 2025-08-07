@@ -1,20 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Check, Star } from "lucide-react";
 import GoogleImg from "../assets/googleall01.png"
+import { useCurrency } from "../components/CurrencyContext.jsx";
+import { useNavigate } from "react-router-dom";
+
 
 const GooglePlans = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { convertPrice } = useCurrency();
+  
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  const navigate = useNavigate();
+  
+    const navigateToBilling = (plan) => {
+      navigate("/billing", {
+        state: {
+          plan: {
+            ...plan,
+            category: "Google Plans", // helpful for invoice display
+            type: "monthly", // you can modify this if you add durations
+          },
+        },
+      });
+    };
+
   const plans = [
     {
       name: "Basic",
-      price: "163",
-      originalPrice: "326",
+      price: 163,
+      originalPrice: 326,
       savings: "50%",
       description: "Perfect for personal websites and blogs",
       features: [
@@ -29,8 +48,8 @@ const GooglePlans = () => {
     },
     {
       name: "Professional",
-      price: "580",
-      originalPrice: "1,160",
+      price: 580,
+      originalPrice: 1160,
       savings: "50%",
       description: "Ideal for growing businesses and portfolios",
       features: [
@@ -45,8 +64,8 @@ const GooglePlans = () => {
     },
     {
       name: "Business",
-      price: "999",
-      originalPrice: "1,998",
+      price: 999,
+      originalPrice: 1998,
       savings: "50%",
       description: "Advanced features for professional websites",
       features: [
@@ -61,8 +80,8 @@ const GooglePlans = () => {
     },
     {
       name: "Enterprise",
-      price: "1,499",
-      originalPrice: "2,998",
+      price: 1499,
+      originalPrice: 2998,
       savings: "50%",
       description: "Maximum performance for high-traffic sites",
       features: [
@@ -134,7 +153,7 @@ const GooglePlans = () => {
           <div className="mb-4">
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="text-gray-400 text-lg line-through">
-                ₹{plan.originalPrice}
+                {convertPrice(plan.originalPrice)}
               </span>
               <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
                 Save {plan.savings}
@@ -142,7 +161,7 @@ const GooglePlans = () => {
             </div>
             <div className="flex items-baseline justify-center">
               <span className="text-4xl font-bold text-[#0e3c47]">
-                ₹{plan.price}
+                {convertPrice(plan.price)}
               </span>
               <span className="text-gray-600 ml-1">/month</span>
             </div>
@@ -170,6 +189,7 @@ const GooglePlans = () => {
 
         {/* CTA Button */}
         <button
+        onClick={() => navigateToBilling(plan)}
           className={`w-full py-4 px-6 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 ${
             plan.popular
               ? "rounded-xl border border-white bg-gradient-to-r from-[#0e3c47] to-[#0040514d] text-white shadow-lg backdrop-blur-md transition duration-300 hover:border-white/100 hover:from-[#133c46] hover:to-[#0040515d] hover:shadow-xl"
@@ -179,10 +199,7 @@ const GooglePlans = () => {
           {plan.ctaText}
         </button>
 
-        {/* Renewal Notice */}
-        <p className="text-xs text-gray-500 text-center mt-4">
-          Renews at ₹{plan.originalPrice}/mo after first year. Cancel anytime.
-        </p>
+        
       </div>
     </div>
   ))}

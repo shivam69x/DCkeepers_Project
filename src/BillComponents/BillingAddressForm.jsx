@@ -169,18 +169,19 @@ const BillingAddressForm = ({ formData, errors, onInputChange, onSubmit }) => {
           </div>
         </div>
 
-        {/* Same as Shipping */}
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            id="sameAsShipping"
-            checked={formData.sameAsShipping}
-            onChange={(e) => onInputChange("sameAsShipping", e.target.checked)}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-          />
-          <label htmlFor="sameAsShipping" className="ml-2 block text-sm text-gray-700">
-            Same as shipping address
+        {/* GSTIN (Optional) */}
+        <div>
+          <label htmlFor="gstin" className="block text-sm font-medium text-gray-700 mb-2">
+            GSTIN Number (Optional)
           </label>
+          <input
+            type="text"
+            id="gstin"
+            value={formData.gstin}
+            onChange={(e) => onInputChange("gstin", e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter GSTIN if available"
+          />
         </div>
 
         <button

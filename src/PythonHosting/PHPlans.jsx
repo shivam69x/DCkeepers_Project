@@ -1,19 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { Check, Star } from "lucide-react";
+import { useCurrency } from "../components/CurrencyContext.jsx"; // <--- NEW
+import { useNavigate } from "react-router-dom";
+
 
 const PHPlans = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const {convertPrice} = useCurrency();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  const navigate = useNavigate();
+  
+    const navigateToBilling = (plan) => {
+      navigate("/billing", {
+        state: {
+          plan: {
+            ...plan,
+            category: "Python Hosting", // helpful for invoice display
+            type: "monthly", // you can modify this if you add durations
+          },
+        },
+      });
+    };
+
+
   const plans = [
     {
       name: "Basic",
-      price: "180",
-      originalPrice: "360",
+      price: 180,
+      originalPrice: 360,
       savings: "50%",
       description: "Perfect for personal websites and blogs",
       features: [
@@ -29,8 +48,8 @@ const PHPlans = () => {
     },
     {
       name: "Professional",
-      price: "269",
-      originalPrice: "538",
+      price: 269,
+      originalPrice: 538,
       savings: "50%",
       description: "Ideal for growing businesses and portfolios",
       features: [
@@ -46,8 +65,8 @@ const PHPlans = () => {
     },
     {
       name: "Business",
-      price: "389",
-      originalPrice: "778",
+      price: 389,
+      originalPrice: 778,
       savings: "50%",
       description: "Advanced features for professional websites",
       features: [
@@ -63,8 +82,8 @@ const PHPlans = () => {
     },
     {
       name: "Enterprise",
-      price: "589",
-      originalPrice: "1,178",
+      price: 589,
+      originalPrice: 1178,
       savings: "50%",
       description: "Maximum performance for high-traffic sites",
       features: [
@@ -139,7 +158,7 @@ const PHPlans = () => {
                   <div className="mb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <span className="text-gray-400 text-lg line-through">
-                        ₹{plan.originalPrice}
+                        {convertPrice (plan.originalPrice)}
                       </span>
                       <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
                         Save {plan.savings}
@@ -147,7 +166,7 @@ const PHPlans = () => {
                     </div>
                     <div className="flex items-baseline justify-center">
                       <span className="text-4xl font-bold text-[#0e3c47]">
-                        ₹{plan.price}
+                        {convertPrice (plan.price)}
                       </span>
                       <span className="text-gray-600 ml-1">/month</span>
                     </div>
@@ -172,6 +191,7 @@ const PHPlans = () => {
 
                 {/* CTA Button */}
                 <button
+                onClick={()=> navigateToBilling(plan)}
                   className={`w-full py-4 px-6 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 ${
                     plan.popular
                       ? "rounded-xl border border-white bg-gradient-to-r from-[#0e3c47] to-[#0040514d] text-white shadow-lg backdrop-blur-md transition duration-300 hover:border-white/100 hover:from-[#133c46] hover:to-[#0040515d] hover:shadow-xl"
@@ -181,11 +201,7 @@ const PHPlans = () => {
                   {plan.ctaText}
                 </button>
 
-                {/* Renewal Notice */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  Renews at ₹{plan.originalPrice}/mo after first year. Cancel
-                  anytime.
-                </p>
+               
               </div>
             </div>
           ))}

@@ -25,8 +25,8 @@ const PythonHostingPage = () => {
             <div className="text-center lg:text-left space-y-8">
               <div className="space-y-4">
                 <h1 className="text-2xl md:text-3xl lg:text-[49px] font-bold text-[#0e3c47] leading-tight flex flex-col gap-2">
-                  India's Best Linux WHM cPanel Pricing At Affordable Price.
-                  <span className="text-sm md:text-xl lg:text-[35px] mt-4 text-[#185f71] mb-3 ">Linux WHM cPanel Pricing</span>
+                  Linux Hosting
+                  <span className="text-sm md:text-xl lg:text-[35px] mt-4 text-[#185f71] mb-3 ">Official cPanel/WHM License for Linux Servers</span>
                 </h1>
 
                 <p className="text-sm md:text-base text-[#0e3c47d5] max-w-2xl mx-auto lg:mx-0 leading-relaxed ">

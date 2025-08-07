@@ -22,7 +22,7 @@ const BillForm = () => {
     state: '',
     zipCode: '',
     country: 'India',
-    sameAsShipping: false
+    gstin: "",
   });
 
   const [errors, setErrors] = useState({});

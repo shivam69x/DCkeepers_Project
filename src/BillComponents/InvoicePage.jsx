@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Download } from "lucide-react";
@@ -6,7 +8,7 @@ import DCKLogoPng from "../assets/DCK - Footer.png";
 import Scanner from "../assets/scannerdck.png";
 // import OrderSummary from "./OrderSummary"; // Uncomment if available
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe("pk_test_51RhDWjFNwENbYE3jl4cNDPmpTOvd5zPRIcEhoQfwUnbrZULDzH9xgLC0N8MVUld864fGfhgp8NFx1LnVg90Un9Jx00UnECZXMG");
 
 const InvoiceHeader = ({ invoice, status }) => (
   <div className="relative">

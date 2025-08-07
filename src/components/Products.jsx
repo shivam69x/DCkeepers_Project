@@ -193,10 +193,10 @@ export default function Products() {
 
           {/* Feature 12 */}
           <div className="md:p-8 lg:p-10 md:border-l md:border-gray-400 md:border-t flex flex-col justify-center items-center">
-            <div className=" relative top-4 w-20 h-14 rounded-ful flex justify-center items-center">
+            <div className=" relative top-3 w-20 h-14 rounded-ful flex justify-center items-center">
               <img src={KEY} alt="" />
             </div>
-            <h3 className="mt-12 text-lg font-bold text-gray-900">
+            <h3 className="mt-7 text-lg font-bold text-gray-900">
               License
             </h3>
             <p className="mt-5 text-base text-gray-600">

@@ -85,7 +85,7 @@ const AboutUs = () => {
       <section className="py-10 px-4 sm:px-6 bg-gradient-to-br from-sky-100 via-white to-indigo-100">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0c7e9a] mb-6 text-left">
-            Dc keepers Infotech
+            Digital Cloud Keepers
           </h2>
 
           <div className="space-y-6 max-w-5xl mx-auto text-[#0e3c47e3] text-base sm:text-lg leading-relaxed">

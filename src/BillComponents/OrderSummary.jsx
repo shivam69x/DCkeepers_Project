@@ -100,14 +100,11 @@ const OrderSummary = ({ plan }) => {
             />
           </svg>
           <span className="text-sm text-blue-800 font-medium">
-            30-day money-back guarantee
+            10-day money-back guarantee
           </span>
         </div>
       </div>
 
-      <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 font-medium mt-5">
-        Submit Payment
-      </button>
     </div>
   );
 };

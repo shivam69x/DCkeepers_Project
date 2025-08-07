@@ -1,19 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Check, Star } from "lucide-react";
+import { useCurrency }  from "../components/CurrencyContext";
+import { useNavigate } from "react-router-dom";
 
 const MPlans = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const {convertPrice} = useCurrency();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  const navigate = useNavigate();
+    
+      const navigateToBilling = (plan) => {
+        navigate("/billing", {
+          state: {
+            plan: {
+              ...plan,
+              category: "Google Plans", 
+              type: "monthly", 
+            },
+          },
+        });
+      };
+
   const plans = [
     {
       name: "Basic",
-      price: "510",
-      originalPrice: "1,020",
+      price: 510,
+      originalPrice: 1020,
       savings: "50%",
       description: "Start with web and mobile apps",
       features: [
@@ -24,13 +41,13 @@ const MPlans = () => {
         "Manage customer appointments",
         "Anytime phone and web support",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
     {
       name: "STANDARD",
-      price: "1,062.5",
-      originalPrice: "2,125",
+      price: 1062.5,
+      originalPrice: 2125,
       savings: "50%",
       description: "Everything in Business Basic, plus",
       features: [
@@ -41,13 +58,13 @@ const MPlans = () => {
         "Tools to create personalized documents and professional layouts",
         
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: true,
     },
     {
       name: "APPS",
-      price: "701",
-      originalPrice: "1,402",
+      price: 701,
+      originalPrice: 1402,
       savings: "50%",
       description: "Excludes chat, meeting, calling",
       features: [
@@ -57,13 +74,13 @@ const MPlans = () => {
         "Security and management controls",
         "Advanced security",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
     {
       name: "PREMIUM",
-      price: "1,683",
-      originalPrice: "3,366",
+      price: 1683,
+      originalPrice: 3366,
       savings: "50%",
       description: "Maximum performance, Everything in Business Standard, plus",
       features: [
@@ -73,7 +90,7 @@ const MPlans = () => {
         "Cyberthreat protection",
         "Security and management controls",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
   ];
@@ -140,7 +157,7 @@ const MPlans = () => {
                   <div className="mb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <span className="text-gray-400 text-lg line-through">
-                        ₹{plan.originalPrice}
+                        {convertPrice(plan.originalPrice)}
                       </span>
                       <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
                         Save {plan.savings}
@@ -148,7 +165,7 @@ const MPlans = () => {
                     </div>
                     <div className="flex items-baseline justify-center">
                       <span className="text-4xl font-bold text-[#0e3c47]">
-                        ₹{plan.price}
+                        {convertPrice(plan.price)}
                       </span>
                       <span className="text-gray-600 ml-1">/month</span>
                     </div>
@@ -173,6 +190,7 @@ const MPlans = () => {
 
                 {/* CTA Button */}
                 <button
+                onClick={() => navigateToBilling(plan)}
                   className={`w-full py-4 px-6 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 ${
                     plan.popular
                       ? "rounded-xl border border-white bg-gradient-to-r from-[#0e3c47] to-[#0040514d] text-white shadow-lg backdrop-blur-md transition duration-300 hover:border-white/100 hover:from-[#133c46] hover:to-[#0040515d] hover:shadow-xl"
@@ -182,11 +200,7 @@ const MPlans = () => {
                   {plan.ctaText}
                 </button>
 
-                {/* Renewal Notice */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  Renews at ₹{plan.originalPrice}/mo after first year. Cancel
-                  anytime.
-                </p>
+                
               </div>
             </div>
           ))}

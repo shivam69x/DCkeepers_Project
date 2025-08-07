@@ -1,19 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { Check, Star } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Check, Star } from "lucide-react";
+import { useCurrency } from "../components/CurrencyContext";
+import { useNavigate } from "react-router-dom";
 
 const MailPlans = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { convertPrice } = useCurrency();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  const navigate = useNavigate();
+
+  const navigateToBilling = (plan) => {
+    navigate("/billing", {
+      state: {
+        plan: {
+          ...plan,
+          category: "Email Plans",
+          type: "monthly",
+        },
+      },
+    });
+  };
+
   const plans = [
     {
       name: "Basic",
-      price: "6,999",
-      originalPrice: "13,998",
+      price: 6999,
+      originalPrice: 13998,
       savings: "50%",
       description: "Perfect for personal websites and blogs",
       features: [
@@ -26,12 +43,12 @@ const MailPlans = () => {
         "FREE Set Up!",
       ],
       ctaText: "Buy Now",
-      popular: false
+      popular: false,
     },
     {
       name: "Professional",
-      price: "7,999",
-      originalPrice: "15,998",
+      price: 7999,
+      originalPrice: 15998,
       savings: "50%",
       description: "Ideal for growing businesses and portfolios",
       features: [
@@ -44,16 +61,16 @@ const MailPlans = () => {
         "FREE Set Up!",
       ],
       ctaText: "Buy Now",
-      popular: true
+      popular: true,
     },
     {
       name: "Business",
-      price: "8,499",
-      originalPrice: "16,998",
+      price: 8499,
+      originalPrice: 16998,
       savings: "50%",
       description: "Advanced features for professional websites",
       features: [
-       "8 CPU Core / 8 Threads",
+        "8 CPU Core / 8 Threads",
         "16 GB RAM",
         "120GB NVme + 2TB ",
         "5 TB Bandwidth",
@@ -62,12 +79,12 @@ const MailPlans = () => {
         "FREE Set Up!",
       ],
       ctaText: "Buy Now",
-      popular: false
+      popular: false,
     },
     {
       name: "Enterprise",
-      price: "11,000",
-      originalPrice: "22,000",
+      price: 100000,
+      originalPrice: 50000,
       savings: "50%",
       description: "Maximum performance for high-traffic sites",
       features: [
@@ -81,15 +98,19 @@ const MailPlans = () => {
         "FREE Set Up!",
       ],
       ctaText: "Buy Now",
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-sky-100 via-white to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <h2 className="text-2xl sm:text-[40px] font-bold text-[#0e3c47] mb-5">
             Choose Your Perfect
             <span className="text-blue-600"> Email Marketing Plan </span>
@@ -105,10 +126,14 @@ const MailPlans = () => {
             <div
               key={plan.name}
               className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 ${
-                plan.popular ? 'ring-4 ring-green-500 ring-opacity-80' : ''
-              } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                plan.popular ? "ring-4 ring-green-500 ring-opacity-80" : ""
+              } ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
               style={{
-                transitionDelay: `${index * 150}ms`
+                transitionDelay: `${index * 150}ms`,
               }}
             >
               {/* Popular Badge */}
@@ -124,19 +149,27 @@ const MailPlans = () => {
               <div className="p-8">
                 {/* Plan Header */}
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-[#0e3c47] mb-2">{plan.name}</h3>
-                  <p className="text-[#0e3c47da] text-sm mb-4">{plan.description}</p>
-                  
+                  <h3 className="text-2xl font-bold text-[#0e3c47] mb-2">
+                    {plan.name}
+                  </h3>
+                  <p className="text-[#0e3c47da] text-sm mb-4">
+                    {plan.description}
+                  </p>
+
                   {/* Pricing */}
                   <div className="mb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <span className="text-gray-400 text-lg line-through">₹{plan.originalPrice}</span>
+                      <span className="text-gray-400 text-lg line-through">
+                        {convertPrice(plan.originalPrice)}
+                      </span>
                       <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
                         Save {plan.savings}
                       </span>
                     </div>
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold text-[#0e3c47]">₹{plan.price}</span>
+                      <span className="text-4xl font-bold text-[#0e3c47]">
+                        {convertPrice(plan.price)}
+                      </span>
                       <span className="text-gray-600 ml-1">/month</span>
                     </div>
                   </div>
@@ -150,7 +183,9 @@ const MailPlans = () => {
                         <div className="flex-shrink-0 w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
                           <Check className="w-3 h-3 text-green-600" />
                         </div>
-                        <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                        <span className="text-gray-700 text-sm leading-relaxed">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -158,26 +193,26 @@ const MailPlans = () => {
 
                 {/* CTA Button */}
                 <button
+                  onClick={() => navigateToBilling(plan)}
                   className={`w-full py-4 px-6 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 ${
                     plan.popular
                       ? "rounded-xl border border-white bg-gradient-to-r from-[#0e3c47] to-[#0040514d] text-white shadow-lg backdrop-blur-md transition duration-300 hover:border-white/100 hover:from-[#133c46] hover:to-[#0040515d] hover:shadow-xl"
-                      : 'bg-gray-100 text-gray-900 hover:bg-blue-50 hover:text-blue-700 border-2 border-transparent hover:border-blue-200'
+                      : "bg-gray-100 text-gray-900 hover:bg-blue-50 hover:text-blue-700 border-2 border-transparent hover:border-blue-200"
                   }`}
                 >
                   {plan.ctaText}
                 </button>
-
-                {/* Renewal Notice */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  Renews at ₹{plan.originalPrice}/mo after first year. Cancel anytime.
-                </p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom Section */}
-        <div className={`text-center mt-20 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className={`text-center mt-20 transition-all duration-1000 delay-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <div className="bg-white/90 border  backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto">
             <h3 className="text-xl font-bold text-gray-900 mb-11">
               Best Hosting Features
@@ -188,34 +223,49 @@ const MailPlans = () => {
                 <div className="bg-blue-100 rounded-full p-3 mb-3">
                   <Check className="w-6 h-6 text-green-500" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">99.9% Uptime</h4>
-                <p className="text-gray-600 text-xs">Guaranteed reliable hosting</p>
+                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
+                  99.9% Uptime
+                </h4>
+                <p className="text-gray-600 text-xs">
+                  Guaranteed reliable hosting
+                </p>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="bg-blue-100 rounded-full p-3 mb-3">
                   <Check className="w-6 h-6 text-green-500" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">Free Migration</h4>
-                <p className="text-gray-600 text-xs">We'll move your site for free</p>
+                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
+                  Free Migration
+                </h4>
+                <p className="text-gray-600 text-xs">
+                  We'll move your site for free
+                </p>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="bg-blue-100 rounded-full p-3 mb-3">
                   <Check className="w-6 h-6 text-green-500" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">24/7 Support</h4>
-                <p className="text-gray-600 text-xs">Expert help when you need it</p>
+                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
+                  24/7 Support
+                </h4>
+                <p className="text-gray-600 text-xs">
+                  Expert help when you need it
+                </p>
               </div>
 
-               <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center">
                 <div className="bg-blue-100 rounded-full p-3 mb-3">
                   <Check className="w-6 h-6 text-green-500" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">Multi Data Center</h4>
-                <p className="text-gray-600 text-xs">Worldwide Data Center Network</p>
+                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
+                  Multi Data Center
+                </h4>
+                <p className="text-gray-600 text-xs">
+                  Worldwide Data Center Network
+                </p>
               </div>
-
             </div>
           </div>
         </div>

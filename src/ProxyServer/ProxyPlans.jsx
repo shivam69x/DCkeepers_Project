@@ -24,7 +24,7 @@ const ProxyPlans = () => {
         "24/7 Support",
         "1-Click WordPress Install",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
     {
@@ -41,7 +41,7 @@ const ProxyPlans = () => {
         "Priority Support",
         "Advanced Security Features",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: true,
     },
     {
@@ -58,7 +58,7 @@ const ProxyPlans = () => {
         "Premium Support",
         "Daily Backups",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
     {
@@ -75,7 +75,7 @@ const ProxyPlans = () => {
         "Dedicated Support",
         "Advanced Analytics",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
   ];
@@ -181,11 +181,6 @@ const ProxyPlans = () => {
                   {plan.ctaText}
                 </button>
 
-                {/* Renewal Notice */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  Renews at ₹{plan.originalPrice}/mo after first year. Cancel
-                  anytime.
-                </p>
               </div>
             </div>
           ))}

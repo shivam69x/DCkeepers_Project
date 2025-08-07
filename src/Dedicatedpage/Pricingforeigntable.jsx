@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
 import { Server } from 'lucide-react';
+import { useCurrency } from "../components/CurrencyContext.jsx";
+import { useNavigate } from "react-router-dom"; 
 
 const PricingforeignTable = () => {
   const [selectedOs, setSelectedOs] = useState('linux');
+  const {convertPrice} = useCurrency();
+
+  const navigate = useNavigate();
+  
+    const navigateToBilling = (server) => {
+      navigate("/billing", {
+        state: {
+          plan: {
+            ...server,
+            category: "D-India Hosting", 
+            type: "monthly",
+          },
+        },
+      });
+    };
 
   const servers = [
     {
@@ -167,10 +184,12 @@ const PricingforeignTable = () => {
                 <div className="text-slate-600 text-sm">{server.storage}</div>
                 <div className="text-slate-600 text-sm">{server.bandwidth}</div>
                 <div className="text-slate-600 text-sm">{server.ips}</div>
-                <div className="text-slate-600 text-sm">₹{server.price.toLocaleString()}</div>
+                <div className="text-slate-600 text-sm"> {convertPrice (server.price)} </div>
                 <div>
-                  <button className="bg-sky-900 hover:bg-teal-600 text-white px-4 py-2 rounded-md transition-colors text-sm font-medium">
-                    Configure Now
+                  <button 
+                  onClick={() => navigateToBilling(server)}
+                  className="bg-sky-900 hover:bg-teal-600 text-white px-4 py-2 rounded-md transition-colors text-sm font-medium">
+                    Buy Now
                   </button>
                 </div>
               </div>

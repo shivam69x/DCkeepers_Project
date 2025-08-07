@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero15 from "../assets/13.png";
 import { ArrowRight } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 export default function Heroforeign() {
   const handleScroll = (id) => {
@@ -11,7 +12,7 @@ export default function Heroforeign() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#dff6fd] to-[#f7fafe] min-h-[420px] overflow-hidden py-8 sm:py-12">
+    <section className="relative bg-gradient-to-br from-[#dff6fd] to-[#f7fafe] min-h-[420px] overflow-hidden py-8 sm:py-1">
       <div className="container mx-auto px-4 sm:px-6 h-full relative">
         {/* Carousel Container */}
         <div className="relative w-full h-full flex items-center">
@@ -27,6 +28,7 @@ export default function Heroforeign() {
                 </p>
                 {/* CTA Buttons */}
                 <div className="pt-2">
+                 <Link to={""}>
                   <button
                     className="group bg-[#126276] hover:bg-[#218aa4] text-white font-semibold px-5 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg inline-flex items-center space-x-2 text-base"
                     aria-label="View all hosting plans"
@@ -34,6 +36,7 @@ export default function Heroforeign() {
                     <span>See All Plans</span>
                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
+                 </Link>
                 </div>
               </div>
 

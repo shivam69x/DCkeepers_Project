@@ -14,7 +14,7 @@ export default function Heroforeign() {
     <section className="relative bg-gradient-to-br from-[#dff6fd] to-[#f7fafe] min-h-[440px] overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 h-full relative">
         {/* Carousel Container */}
-        <div className="relative w-full h-full flex items-center py-8 sm:py-12">
+        <div className="relative w-full h-full flex items-center py-8 sm:py-0">
           <div className="w-full h-full flex items-center">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Side - Text Content */}

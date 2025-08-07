@@ -11,7 +11,7 @@ export default function Heroindia() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#dff6fd] to-[#f7fafe] min-h-[420px] overflow-hidden py-8 sm:py-12">
+    <section className="relative bg-gradient-to-br from-[#dff6fd] to-[#f7fafe] min-h-[420px] overflow-hidden py-8 sm:py-1">
       <div className="container mx-auto px-4 sm:px-6 h-full relative">
         {/* Carousel Container */}
         <div className="relative w-full h-full flex items-center">

@@ -28,8 +28,6 @@ import BillForm from "./pages/BillForm.jsx";
 import Invoice from "./BillComponents/InvoicePage.jsx";
 import Success from "./pages/Success.jsx";
 
-
-
 const App = () => {
   return (
     <>
@@ -69,7 +67,6 @@ const App = () => {
 
           <Route path="/billing" element={<BillForm />} />
           <Route path="/invoice" element={<Invoice />} />
-          
         </Routes>
         <Footer />
       </BrowserRouter>

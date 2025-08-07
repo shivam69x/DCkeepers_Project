@@ -1,19 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Check, Star } from "lucide-react";
+import { useCurrency } from "../components/CurrencyContext.jsx"; // <--- NEW
+import { useNavigate } from "react-router-dom";
 
 const ForexPlans = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { convertPrice } = useCurrency(); // <--- NEW
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  const navigate = useNavigate();
+
+  const navigateToBilling = (plan) => {
+    navigate("/billing", {
+      state: {
+        plan: {
+          ...plan,
+          category: "Forex Hosting", // helpful for invoice display
+          type: "monthly", // you can modify this if you add durations
+        },
+      },
+    });
+  };
+
   const plans = [
     {
       name: "Basic",
-      price: "180",
-      originalPrice: "360",
+      price: 180,
+      originalPrice: 360,
       savings: "50%",
       description: "Perfect for personal websites and blogs",
       features: [
@@ -24,13 +41,13 @@ const ForexPlans = () => {
         "24/7 Support",
         "1-Click WordPress Install",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
     {
       name: "Professional",
-      price: "269",
-      originalPrice: "538",
+      price: 269,
+      originalPrice: 538,
       savings: "50%",
       description: "Ideal for growing businesses and portfolios",
       features: [
@@ -41,13 +58,13 @@ const ForexPlans = () => {
         "Priority Support",
         "Advanced Security Features",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: true,
     },
     {
       name: "Business",
-      price: "389",
-      originalPrice: "778",
+      price: 389,
+      originalPrice: 778,
       savings: "50%",
       description: "Advanced features for professional websites",
       features: [
@@ -58,13 +75,13 @@ const ForexPlans = () => {
         "Premium Support",
         "Daily Backups",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
     {
       name: "Enterprise",
-      price: "589",
-      originalPrice: "1,178",
+      price: 589,
+      originalPrice: 1178,
       savings: "50%",
       description: "Maximum performance for high-traffic sites",
       features: [
@@ -75,7 +92,7 @@ const ForexPlans = () => {
         "Dedicated Support",
         "Advanced Analytics",
       ],
-      ctaText: "Get Started",
+      ctaText: "Buy Now",
       popular: false,
     },
   ];
@@ -83,7 +100,6 @@ const ForexPlans = () => {
   return (
     <section className="min-h-screen bg-gradient-to-br from-sky-100 via-white to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -94,12 +110,11 @@ const ForexPlans = () => {
             <span className="text-blue-600"> Forex Hosting Plan</span>
           </h2>
           <p className="text-sm text-[#0e3c47cc] max-w-3xl mx-auto leading-relaxed">
-            Get started with complete confidence. Our 30-day money-back
-            guarantee means it's risk-free.
+            Get started with complete confidence. Our 3-day money-back guarantee
+            means it's risk-free.
           </p>
         </div>
 
-        {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan, index) => (
             <div
@@ -115,7 +130,6 @@ const ForexPlans = () => {
                 transitionDelay: `${index * 150}ms`,
               }}
             >
-              {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-7 left-1/2 transform -translate-x-1/2">
                   <div className="bg-gradient-to-r from-green-500 to-green-700 text-white px-6 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg">
@@ -126,7 +140,6 @@ const ForexPlans = () => {
               )}
 
               <div className="p-8">
-                {/* Plan Header */}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-[#0e3c47] mb-2">
                     {plan.name}
@@ -135,11 +148,11 @@ const ForexPlans = () => {
                     {plan.description}
                   </p>
 
-                  {/* Pricing */}
+                  {/* 🟢 Currency-Aware Pricing */}
                   <div className="mb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <span className="text-gray-400 text-lg line-through">
-                        ₹{plan.originalPrice}
+                        {convertPrice(plan.originalPrice)}
                       </span>
                       <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
                         Save {plan.savings}
@@ -147,14 +160,13 @@ const ForexPlans = () => {
                     </div>
                     <div className="flex items-baseline justify-center">
                       <span className="text-4xl font-bold text-[#0e3c47]">
-                        ₹{plan.price}
+                        {convertPrice(plan.price)}
                       </span>
                       <span className="text-gray-600 ml-1">/month</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Features List */}
                 <div className="mb-8">
                   <ul className="space-y-4">
                     {plan.features.map((feature, featureIndex) => (
@@ -170,8 +182,8 @@ const ForexPlans = () => {
                   </ul>
                 </div>
 
-                {/* CTA Button */}
                 <button
+                  onClick={() => navigateToBilling(plan)}
                   className={`w-full py-4 px-6 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 ${
                     plan.popular
                       ? "rounded-xl border border-white bg-gradient-to-r from-[#0e3c47] to-[#0040514d] text-white shadow-lg backdrop-blur-md transition duration-300 hover:border-white/100 hover:from-[#133c46] hover:to-[#0040515d] hover:shadow-xl"
@@ -180,78 +192,9 @@ const ForexPlans = () => {
                 >
                   {plan.ctaText}
                 </button>
-
-                {/* Renewal Notice */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  Renews at ₹{plan.originalPrice}/mo after first year. Cancel
-                  anytime.
-                </p>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom Section */}
-        <div
-          className={`text-center mt-20 transition-all duration-1000 delay-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="bg-white/90 border  backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-xl font-bold text-gray-900 mb-11">
-              Best Hosting Features
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center">
-              <div className="flex flex-col items-center">
-                <div className="bg-blue-100 rounded-full p-3 mb-3">
-                  <Check className="w-6 h-6 text-green-500" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
-                  99.9% Uptime
-                </h4>
-                <p className="text-gray-600 text-xs">
-                  Guaranteed reliable hosting
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <div className="bg-blue-100 rounded-full p-3 mb-3">
-                  <Check className="w-6 h-6 text-green-500" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
-                  Free Migration
-                </h4>
-                <p className="text-gray-600 text-xs">
-                  We'll move your site for free
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <div className="bg-blue-100 rounded-full p-3 mb-3">
-                  <Check className="w-6 h-6 text-green-500" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
-                  24/7 Support
-                </h4>
-                <p className="text-gray-600 text-xs">
-                  Expert help when you need it
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <div className="bg-blue-100 rounded-full p-3 mb-3">
-                  <Check className="w-6 h-6 text-green-500" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-[20px]">
-                  Multi Data Center
-                </h4>
-                <p className="text-gray-600 text-xs">
-                  Worldwide Data Center Network
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

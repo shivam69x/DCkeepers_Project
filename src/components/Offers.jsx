@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCurrency } from "../components/CurrencyContext"; // ✅ Import context
 
 export default function Offers() {
   const [selectedOS, setSelectedOS] = useState("linux");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const { convertPrice } = useCurrency(); // ✅ Use currency converter
 
   const handleBuyNow = (plan) => {
-    navigate("/billing", { state: { plan } }); 
+    navigate("/billing", { state: { plan } });
   };
 
   const plans = {
@@ -14,7 +16,7 @@ export default function Offers() {
       {
         name: "Shared Hosting",
         subtitle: "STARTING FROM",
-        price: "199",
+        price: 199,
         features: [
           "1 Website",
           "1 Cpanel account",
@@ -29,7 +31,7 @@ export default function Offers() {
       {
         name: "Reseller Hosting",
         subtitle: "STARTING FROM",
-        price: "699",
+        price: 699,
         features: [
           "Unlimited Websites",
           "Unlimited Cpanel Accounts",
@@ -44,7 +46,7 @@ export default function Offers() {
       {
         name: "Cloud VPS",
         subtitle: "Best for Entrepreneurs",
-        price: "999",
+        price: 999,
         features: [
           "2 CPU Cores",
           "2 GB RAM",
@@ -60,7 +62,7 @@ export default function Offers() {
       {
         name: "Forex Server",
         subtitle: "STARTING FROM",
-        price: "1499",
+        price: 1499,
         features: [
           "2 CPU Cores",
           "4 GB RAM",
@@ -78,7 +80,7 @@ export default function Offers() {
       {
         name: "Shared Hosting",
         subtitle: "STARTING FROM",
-        price: "299",
+        price: 299,
         features: [
           "1 Website",
           "1 Plesk account",
@@ -93,7 +95,7 @@ export default function Offers() {
       {
         name: "Reseller Hosting",
         subtitle: "STARTING FROM",
-        price: "899",
+        price: 899,
         features: [
           "Unlimited Websites",
           "Unlimited Plesk Accounts",
@@ -108,7 +110,7 @@ export default function Offers() {
       {
         name: "Cloud VPS",
         subtitle: "Best for Entrepreneurs",
-        price: "1299",
+        price: 1299,
         features: [
           "2 CPU Cores",
           "3 GB RAM",
@@ -124,7 +126,7 @@ export default function Offers() {
       {
         name: "Forex Server",
         subtitle: "STARTING FROM",
-        price: "1899",
+        price: 1899,
         features: [
           "4 CPU Cores",
           "6 GB RAM",
@@ -214,7 +216,7 @@ export default function Offers() {
 
                   <div className="mb-4">
                     <span className="text-3xl font-bold text-[#0b2d35]">
-                      ₹ {plan.price}
+                      {convertPrice(plan.price)}
                     </span>
                     <span className="text-[#0e3c47cb]">/mo.</span>
                   </div>
