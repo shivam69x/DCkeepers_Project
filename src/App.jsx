@@ -36,7 +36,7 @@ const App = () => {
         <Navbar />
         <SecNav />
         <Routes>
-          <Route path="/" element={<SignUp />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
