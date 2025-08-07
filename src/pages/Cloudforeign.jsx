@@ -1,9 +1,10 @@
 import React from 'react'
 import Heroforeign from '../Cloud/Heroforeign';
 import Planforeign from '../Cloud/Planforeign';
-import Faqsection from '../components/Faqsection';
+
 import Clients from '../components/Clients';
 import Features from '../VPS/Features';
+import Faqsection from '../components/Faqsectionone';
 
 
 const Cloudforeign = () => {

@@ -3,11 +3,11 @@ import { Zap } from "lucide-react";
 import { Cloud, Download, Upload, Server, ArrowRight } from "lucide-react";
 import ProxyPlans from "./ProxyPlans";
 import ProxyFeatures from "./ProxyFeaturs";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
 import ProxyImg from "../assets/proxy011.png";
 
 import ProxyPriceTable from "./ProxyPriceTable";
+import Faqsection from "../components/Faqsectionone";
 
 const ProxyHome = () => {
   return (
@@ -157,7 +157,7 @@ const ProxyHome = () => {
       <ProxyFeatures />
       {/* <ProxyPlans /> */}
 
-      <FAQsection />
+      <Faqsection />
 
       <div className=" mt-20">
         <Clients />

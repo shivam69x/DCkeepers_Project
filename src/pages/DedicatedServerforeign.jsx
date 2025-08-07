@@ -1,9 +1,9 @@
 import React from 'react'
 import Dedicatedforeignhero from '../Dedicatedpage/Dedicatedforeignhero';
-import Faqsection from '../components/Faqsection';
 import Clients from '../components/Clients';
 import Pricingforeigntable from '../Dedicatedpage/Pricingforeigntable.jsx';
 import Pricingforeign from '../Dedicatedpage/pricingforeign';
+import Faqsection from '../components/Faqsectionone.jsx';
 
 const DedicatedServerforeign = () => {
   return (

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Heroforeign from "../VPS/Heroforeign";
-import Faqsection from '../components/Faqsection';
+import Faqsection from '../components/Faqsectionone';
 import Clients from '../components/Clients';
 import Planforeign from '../VPS/Planforeign';
 import Features from '../VPS/Features';

@@ -3,10 +3,10 @@
 import React from "react";
 import { Cloud, Download, Upload, Server, ArrowRight, Mail, FileText, Video } from "lucide-react";
 import MicroImg from "../assets/mhome02.png";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
 import MPlans from "./MPlans";
 import MFeatures from "./MFeatures";
+import Faqsection from "../components/Faqsectionone";
 
 const M365 = () => {
   return (
@@ -144,7 +144,7 @@ const M365 = () => {
       </div>
       <MPlans />
       <MFeatures />
-      <FAQsection />
+      <Faqsection />
       <div className=" mt-20">
         <Clients />
         </div>

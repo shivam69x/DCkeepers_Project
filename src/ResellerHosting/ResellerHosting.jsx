@@ -3,8 +3,8 @@ import { Cloud, Download, Upload, Server, ArrowRight } from "lucide-react";
 import RHImg from "../assets/rh09.png";
 import RHPlans from "./RHPlans";
 import RHFeatures from "./RHFeatures";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 const ResellerHostingPage = () => {
   return (
@@ -150,7 +150,7 @@ const ResellerHostingPage = () => {
       </div>
       <RHPlans />
       <RHFeatures />
-      <FAQsection />
+      <Faqsection />
       <div className=" mt-20">
         <Clients />
       </div>

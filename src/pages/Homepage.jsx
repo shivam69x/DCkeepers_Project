@@ -9,8 +9,8 @@ import Products from "../components/Products";
 import AboutUs from "../components/Aboutus";
 import Whyus from "../components/Whyus";
 import Aim from "../components/Aim";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 const Homepage = () => {
   return (
@@ -30,7 +30,7 @@ const Homepage = () => {
           <Whyus />
           <Aim />
         </div>
-        <FAQsection />
+        <Faqsection />
         <div className="mt-20">
           <Clients />
         </div>

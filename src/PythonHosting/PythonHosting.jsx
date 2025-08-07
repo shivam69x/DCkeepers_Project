@@ -4,7 +4,7 @@ import PHImg from "../assets/pyh011.png";
 import PHPlans from "./PHPlans";
 import PHFeatures from "./PHFeatures";
 import Clients from "../components/Clients";
-import FAQsection from "../components/FAQsection";
+import Faqsection from "../components/Faqsectionone";
 
 const PythonHostingPage = () => {
   return (
@@ -150,7 +150,7 @@ const PythonHostingPage = () => {
       </div>
       <PHPlans />
       <PHFeatures />
-      <FAQsection />
+      <Faqsection />
 
       <div className=" mt-20">
         <Clients />

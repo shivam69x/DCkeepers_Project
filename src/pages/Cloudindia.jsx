@@ -1,9 +1,10 @@
 import React from 'react'
-import Faqsection from '../components/Faqsection';
+
 import Clients from '../components/Clients';
 import Heroindia from '../Cloud/Heroindia';
 import Features from '../VPS/Features';
 import Planindia from '../Cloud/Planindia';
+import Faqsection from '../components/Faqsectionone';
 
 const Cloudindia = () => {
     return (

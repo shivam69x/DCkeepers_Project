@@ -2,8 +2,8 @@ import React from 'react';
 import Dedicatedhero from '../Dedicatedpage/Dedicatedhero';
 import Pricingtable from '../Dedicatedpage/Pricingtable';
 import Pricingindia from '../Dedicatedpage/Pricingindia';
-import Faqsection from '../components/Faqsection';
 import Clients from '../components/Clients';
+import Faqsection from '../components/Faqsectionone';
 
 const DedicatedServerindia = () => {
   return (

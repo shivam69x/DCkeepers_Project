@@ -1,7 +1,7 @@
 import React from "react";
 import AboutImg2 from "../assets/about02.png";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 const AboutUs = () => {
   return (
@@ -105,7 +105,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <FAQsection />
+      <Faqsection />
       <div className="mt-20">
         <Clients />
       </div>

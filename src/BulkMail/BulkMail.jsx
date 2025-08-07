@@ -3,8 +3,8 @@ import { ArrowRight, Mail, Users, BarChart3 } from "lucide-react";
 import MailImg from "../assets/mail011.png";
 import MailPlans from "./MailPlans";
 import MailFeatures from "./MailFeatures";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 const BulkMail = () => {
   return (
@@ -118,7 +118,7 @@ const BulkMail = () => {
       {/* Additional Sections */}
       <MailPlans />
       <MailFeatures />
-      <FAQsection />
+      <Faqsection />
       <div className="mt-20">
         <Clients />
       </div>

@@ -3,8 +3,8 @@ import { Cloud, Download, Upload, Server, ArrowRight } from "lucide-react";
 import SHImg from "../assets/sh08.png";
 import SHPlans from "./SHPlans";
 import SHFeatures from "./SHFeatures";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 
 const SharedHostingpage = () => {
@@ -152,7 +152,7 @@ const SharedHostingpage = () => {
 
       <SHPlans/>
       <SHFeatures/> 
-      <FAQsection />
+      <Faqsection />
       <div className=" mt-20">
         <Clients />
 

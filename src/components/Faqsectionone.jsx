@@ -33,7 +33,7 @@ const faqs = [
   },
 ];
 
-export default function FAQsection() {
+export default function Faqsection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {

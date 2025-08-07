@@ -2,8 +2,8 @@ import React from "react";
 import { Cloud, Download, Upload, Server, ArrowRight } from "lucide-react";
 import Limg from "../assets/linux01.png"
 import LPlans from "../License/LPlans"
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 const PythonHostingPage = () => {
   return (
@@ -142,7 +142,7 @@ const PythonHostingPage = () => {
       </div>
       
       <LPlans/>
-      <FAQsection />
+      <Faqsection />
 
       <div className=" mt-20">
         <Clients />

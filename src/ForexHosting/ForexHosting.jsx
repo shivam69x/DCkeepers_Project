@@ -11,8 +11,8 @@ import {
 } from "lucide-react";
 import ForexPlans from "./ForexPlans";
 import ForexFeatures from "./ForexFeatures";
-import FAQsection from "../components/FAQsection";
 import Clients from "../components/Clients";
+import Faqsection from "../components/Faqsectionone";
 
 const ForexHosting = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -240,7 +240,7 @@ const ForexHosting = () => {
       </section>
       <ForexPlans />
       <ForexFeatures />
-      <FAQsection />
+      <Faqsection />
       <div className=" mt-20">
         <Clients />
       </div>

@@ -1,9 +1,9 @@
 import React from 'react'
 import Heroindia from "../VPS/Heroindia";
-import Faqsection from '../components/Faqsection';
 import Clients from '../components/Clients';
 import Planindia from '../VPS/Planindia';
 import Features from '../VPS/Features';
+import Faqsection from '../components/Faqsectionone';
 
 const Vpsindia = () => {
     return (
